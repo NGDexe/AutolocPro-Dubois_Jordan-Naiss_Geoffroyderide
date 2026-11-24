@@ -19,5 +19,17 @@ public class TestClients {
         Client c3 = new Client(c2);
         c3.afficherInfos();
         System.out.println("Âge de la copie : " + c3.calculerAge(2026) + " ans");
+
+
+
+        System.out.println("Même objet : " + (c2 == c3));
+        System.out.println("Même permis : " + c2.equals(c3));
+        System.out.println("Même hashCode : " + (c2.hashCode() == c3.hashCode()));
+
+        System.out.println("Nombre de clients : " + Client.getCompteurClients());
+
+        System.out.println(c2);
+        System.out.println(c3);
     }
+
 }

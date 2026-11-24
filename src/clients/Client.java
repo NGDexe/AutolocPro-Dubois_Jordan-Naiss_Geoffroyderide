@@ -7,6 +7,8 @@ public class Client {
     String telephone;
     int anneeNaissance;
 
+    private static int compteurClients = 0;
+
 
     public Client() {
         this.nom = "N/A";
@@ -16,6 +18,7 @@ public class Client {
         this.anneeNaissance = 2000;
 
         System.out.println("Constructeur par défaut de Client appelé");
+        compteurClients++;
     }
 
     public Client(String nom, String prenom, String numeroPermis,
@@ -27,6 +30,7 @@ public class Client {
         this.anneeNaissance = anneeNaissance;
 
         System.out.println("Constructeur d'initialisation de Client appelé");
+        compteurClients++;
     }
 
     public Client(Client c) {
@@ -41,6 +45,7 @@ public class Client {
         this.anneeNaissance = c.anneeNaissance;
 
         System.out.println("Constructeur de copie de Client appelé");
+        compteurClients++;
     }
 
 
@@ -59,5 +64,74 @@ public class Client {
                         + "', anneeNaissance=" + this.anneeNaissance
                         + "}"
         );
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public int getAnneeNaissance() {
+        return anneeNaissance;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public String getNumeroPermis() {
+        return numeroPermis;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setAnneeNaissance(int anneeNaissance) {
+        this.anneeNaissance = anneeNaissance;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+
+    public static int getCompteurClients() {
+        return compteurClients;
+    }
+
+
+
+
+    @Override
+    public String toString() {
+        return String.format(
+                "%s %s - Permis : %s - Téléphone : %s - Naissance : %d",
+                nom, prenom, numeroPermis, telephone, anneeNaissance
+        );
+    }
+
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+
+        Client autre = (Client) obj;
+        return this.numeroPermis.equals(autre.numeroPermis);
+    }
+
+    @Override
+    public int hashCode() {
+        return numeroPermis.hashCode();
     }
 }
